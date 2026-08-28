@@ -1,0 +1,5 @@
+export const SHOP_INFO_REQUEST = "SHOP_INFO_REQUEST";
+export const SHOP_INFO_SUCCESS = "SHOP_INFO_SUCCESS";
+export const SHOP_INFO_FAIL = "SHOP_INFO_FAIL";
+
+export const CLEAR_ERRORS = "CLEAR_ERRORS";

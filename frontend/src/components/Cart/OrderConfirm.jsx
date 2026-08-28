@@ -13,7 +13,7 @@ const OrderConfirm = () => {
 
     return (
         <>
-        <MetaData title="Flipkart: Order Confirmation" />
+        <MetaData title="CustomHub: Order Confirmation" />
 
         <main className="w-full mt-20">
 
@@ -30,8 +30,8 @@ const OrderConfirm = () => {
                             ))}
                         </div>
                         <div className="flex justify-between items-center mt-4 bg-white px-6 py-3 rounded-b-sm">
-                            <p className="text-sm">Order confirmation email will be sent to <span className="font-medium">{user.email}</span></p>
-                            <button onClick={() => { navigate('/process/payment') }} className="bg-primary-orange px-6 py-2 text-white font-medium rounded-sm shadow hover:shadow-lg uppercase">continue</button>
+                            <p className="text-sm">Order notification will be sent to <span className="font-medium">{user.email}</span></p>
+                            <button onClick={() => { navigate('/process/payment') }} className="bg-primary-orange px-6 py-2.5 text-white font-medium rounded-sm shadow hover:shadow-lg uppercase text-sm">Proceed to Order / COD</button>
                         </div>
                     </Stepper>
                 </div>

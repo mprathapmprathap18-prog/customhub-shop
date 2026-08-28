@@ -15,6 +15,7 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import CachedIcon from '@mui/icons-material/Cached';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -151,19 +152,32 @@ const ProductDetails = () => {
                                         </div>
                                     </div>
 
-                                    <div className="w-full flex gap-3">
-                                        {/* <!-- add to cart btn --> */}
-                                        {product.stock > 0 && (
-                                            <button onClick={itemInCart ? goToCart : addToCartHandler} className="p-4 w-1/2 flex items-center justify-center gap-2 text-white bg-primary-yellow rounded-sm shadow hover:shadow-lg">
-                                                <ShoppingCartIcon />
-                                                {itemInCart ? "GO TO CART" : "ADD TO CART"}
+                                    <div className="w-full flex flex-col gap-2.5">
+                                        <div className="w-full flex gap-3">
+                                            {/* <!-- add to cart btn --> */}
+                                            {product.stock > 0 && (
+                                                <button onClick={itemInCart ? goToCart : addToCartHandler} className="p-3.5 w-1/2 flex items-center justify-center gap-2 text-white bg-primary-yellow rounded-sm shadow hover:shadow-lg font-medium text-sm">
+                                                    <ShoppingCartIcon sx={{ fontSize: 18 }} />
+                                                    {itemInCart ? "GO TO CART" : "ADD TO CART"}
+                                                </button>
+                                            )}
+                                            <button onClick={buyNow} disabled={product.stock < 1 ? true : false} className={product.stock < 1 ? "p-3.5 w-full flex items-center justify-center gap-2 text-white bg-red-600 cursor-not-allowed rounded-sm shadow hover:shadow-lg font-medium text-sm" : "p-3.5 w-1/2 flex items-center justify-center gap-2 text-white bg-primary-orange rounded-sm shadow hover:shadow-lg font-medium text-sm"}>
+                                                <FlashOnIcon sx={{ fontSize: 18 }} />
+                                                {product.stock < 1 ? "OUT OF STOCK" : "BUY NOW (COD)"}
                                             </button>
-                                        )}
-                                        <button onClick={buyNow} disabled={product.stock < 1 ? true : false} className={product.stock < 1 ? "p-4 w-full flex items-center justify-center gap-2 text-white bg-red-600 cursor-not-allowed rounded-sm shadow hover:shadow-lg" : "p-4 w-1/2 flex items-center justify-center gap-2 text-white bg-primary-orange rounded-sm shadow hover:shadow-lg"}>
-                                            <FlashOnIcon />
-                                            {product.stock < 1 ? "OUT OF STOCK" : "BUY NOW"}
-                                        </button>
-                                        {/* <!-- add to cart btn --> */}
+                                            {/* <!-- add to cart btn --> */}
+                                        </div>
+
+                                        {/* Direct WhatsApp Order button */}
+                                        <a
+                                            href={`https://api.whatsapp.com/send?phone=917550079573&text=${encodeURIComponent(`👋 Hello Kaaviyaselvan, I want to order this product from Custom Hub Sublimation Shop:\n\n*Product:* ${product.name}\n*Price:* ₹${product.price}\n\nPlease let me know how to share my photo/text for sublimation printing & delivery address.`)}`}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="p-3 w-full flex items-center justify-center gap-2 text-white bg-green-600 hover:bg-green-700 rounded-sm shadow hover:shadow-lg font-bold text-sm uppercase transition cursor-pointer"
+                                        >
+                                            <WhatsAppIcon sx={{ fontSize: 20 }} />
+                                            <span>Order on WhatsApp (Direct Chat)</span>
+                                        </a>
                                     </div>
 
                                 </div>
@@ -202,7 +216,7 @@ const ProductDetails = () => {
                                     {Array(3).fill("").map((el, i) => (
                                         <p className="text-sm flex items-center gap-1" key={i}>
                                             <span className="text-primary-lightGreen"><LocalOfferIcon sx={{ fontSize: "20px" }} /></span>
-                                            <span className="font-medium ml-2">Bank Offer</span> 15% Instant discount on first Flipkart Pay Later order of 500 and above <Link className="text-primary-blue font-medium" to="/">T&C</Link>
+                                            <span className="font-medium ml-2">Bank Offer</span> 15% Instant discount on first CustomHub Pay Later order of 500 and above <Link className="text-primary-blue font-medium" to="/">T&C</Link>
                                         </p>
                                     ))}
                                     {/* <!-- banks offers --> */}
@@ -263,11 +277,11 @@ const ProductDetails = () => {
                                     </div>
                                     {/* <!-- seller details --> */}
 
-                                    {/* <!-- flipkart plus banner --> */}
+                                    {/* <!-- promotional banner --> */}
                                     <div className="sm:w-1/2 mt-4 border">
                                         <img draggable="false" className="w-full h-full object-contain" src="https://rukminim1.flixcart.com/lockin/763/305/images/promotion_banner_v2_active.png" alt="" />
                                     </div>
-                                    {/* <!-- flipkart plus banner --> */}
+                                    {/* <!-- promotional banner --> */}
 
                                     {/* <!-- description details --> */}
                                     <div className="flex flex-col sm:flex-row gap-1 sm:gap-14 mt-4 items-stretch text-sm">

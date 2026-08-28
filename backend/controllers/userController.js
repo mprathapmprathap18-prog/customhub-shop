@@ -6,26 +6,51 @@ const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
 const cloudinary = require('cloudinary');
 
+const getAvatarData = (name, avatarValue) => {
+    if (avatarValue && process.env.CLOUDINARY_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
+        return {
+            public_id: 'local-avatar',
+            url: avatarValue,
+        };
+    }
+
+    const safeName = encodeURIComponent(name || 'User');
+
+    return {
+        public_id: 'default-avatar',
+        url: `https://ui-avatars.com/api/?name=${safeName}&background=random`,
+    };
+};
+
 // Register User
 exports.registerUser = asyncErrorHandler(async (req, res, next) => {
 
-    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-        folder: "avatars",
-        width: 150,
-        crop: "scale",
-    });
+    const { name, email, gender, password, avatar } = req.body;
 
-    const { name, email, gender, password } = req.body;
+    let avatarData = {
+        public_id: 'default-avatar',
+        url: `https://ui-avatars.com/api/?name=${encodeURIComponent(name || 'User')}&background=random`,
+    };
+
+    if (avatar && process.env.CLOUDINARY_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
+        const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+            folder: "avatars",
+            width: 150,
+            crop: "scale",
+        });
+
+        avatarData = {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
+        };
+    }
 
     const user = await User.create({
-        name, 
+        name,
         email,
         gender,
         password,
-        avatar: {
-            public_id: myCloud.public_id,
-            url: myCloud.secure_url,
-        },
+        avatar: avatarData,
     });
 
     sendToken(user, 201, res);
@@ -166,22 +191,31 @@ exports.updateProfile = asyncErrorHandler(async (req, res, next) => {
         email: req.body.email,
     }
 
-    if(req.body.avatar !== "") {
+    if (req.body.avatar && req.body.avatar !== "") {
         const user = await User.findById(req.user.id);
 
-        const imageId = user.avatar.public_id;
+        if (process.env.CLOUDINARY_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
+            const imageId = user.avatar?.public_id;
 
-        await cloudinary.v2.uploader.destroy(imageId);
+            if (imageId) {
+                await cloudinary.v2.uploader.destroy(imageId);
+            }
 
-        const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-            folder: "avatars",
-            width: 150,
-            crop: "scale",
-        });
+            const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+                folder: "avatars",
+                width: 150,
+                crop: "scale",
+            });
 
-        newUserData.avatar = {
-            public_id: myCloud.public_id,
-            url: myCloud.secure_url,
+            newUserData.avatar = {
+                public_id: myCloud.public_id,
+                url: myCloud.secure_url,
+            }
+        } else {
+            newUserData.avatar = {
+                public_id: 'default-avatar',
+                url: `https://ui-avatars.com/api/?name=${encodeURIComponent(req.body.name || user.name || 'User')}&background=random`,
+            };
         }
     }
 

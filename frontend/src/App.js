@@ -13,6 +13,7 @@ import ForgotPassword from './components/User/ForgotPassword';
 import ResetPassword from './components/User/ResetPassword';
 import Account from './components/User/Account';
 import ProtectedRoute from './Routes/ProtectedRoute';
+import OwnerRoute from './Routes/OwnerRoute';
 import Home from './components/Home/Home';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Products from './components/Products/Products';
@@ -36,6 +37,11 @@ import UpdateUser from './components/Admin/UpdateUser';
 import ReviewsTable from './components/Admin/ReviewsTable';
 import Wishlist from './components/Wishlist/Wishlist';
 import NotFound from './components/NotFound';
+import OwnerDashboard from './components/Owner/OwnerDashboard';
+import OwnerOrders from './components/Owner/OwnerOrders';
+import OwnerOrderDetail from './components/Owner/OwnerOrderDetail';
+import OwnerProducts from './components/Owner/OwnerProducts';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 function App() {
 
@@ -115,6 +121,7 @@ function App() {
           </ProtectedRoute>
         } ></Route>
 
+        <Route path="/order/success" element={<OrderSuccess success={true} />} />
         <Route path="/orders/success" element={<OrderSuccess success={true} />} />
         <Route path="/orders/failed" element={<OrderSuccess success={false} />} />
         {/* order process */}
@@ -237,10 +244,47 @@ function App() {
           </ProtectedRoute>
         } ></Route>
 
+        {/* Owner Routes */}
+        <Route path="/owner/dashboard" element={
+          <OwnerRoute>
+            <OwnerDashboard />
+          </OwnerRoute>
+        } ></Route>
+
+        <Route path="/owner/orders" element={
+          <OwnerRoute>
+            <OwnerOrders />
+          </OwnerRoute>
+        } ></Route>
+
+        <Route path="/owner/order/:id" element={
+          <OwnerRoute>
+            <OwnerOrderDetail />
+          </OwnerRoute>
+        } ></Route>
+
+        <Route path="/owner/products" element={
+          <OwnerRoute>
+            <OwnerProducts />
+          </OwnerRoute>
+        } ></Route>
+
         <Route path="*" element={<NotFound />}></Route>
 
       </Routes>
       <Footer />
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://api.whatsapp.com/send?phone=917550079573&text=Hi%20Kaaviyaselvan,%20I%20have%20an%20inquiry%20about%20Custom%20Hub%20Sublimation%20Gifts!"
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center gap-2 hover:scale-110 transition duration-300 border-2 border-white cursor-pointer"
+        title="Chat with Kaaviyaselvan on WhatsApp"
+      >
+        <WhatsAppIcon sx={{ fontSize: 28 }} />
+        <span className="hidden sm:inline font-bold text-xs pr-1">WhatsApp Us</span>
+      </a>
     </>
   );
 }

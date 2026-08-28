@@ -7,6 +7,8 @@ import { cartReducer } from './reducers/cartReducer';
 import { saveForLaterReducer } from './reducers/saveForLaterReducer';
 import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer, paymentStatusReducer } from './reducers/orderReducer';
 import { wishlistReducer } from './reducers/wishlistReducer';
+import { shopInfoReducer } from './reducers/shopReducer';
+import { ownerStatsReducer, ownerOrdersReducer, ownerProductsReducer, ownerCustomersReducer, ownerOrderUpdateReducer } from './reducers/ownerReducer';
 
 const reducer = combineReducers({
     user: userReducer,
@@ -30,6 +32,12 @@ const reducer = combineReducers({
     reviews: productReviewsReducer,
     review: reviewReducer,
     wishlist: wishlistReducer,
+    shopInfo: shopInfoReducer,
+    ownerStats: ownerStatsReducer,
+    ownerOrders: ownerOrdersReducer,
+    ownerProducts: ownerProductsReducer,
+    ownerCustomers: ownerCustomersReducer,
+    ownerOrderUpdate: ownerOrderUpdateReducer,
 });
 
 let initialState = {

@@ -1,6 +1,8 @@
 // const nodeMailer = require('nodemailer');
-const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const sgMail = require('@sendgrid/mail');
+if (process.env.SENDGRID_API_KEY && process.env.SENDGRID_API_KEY.startsWith('SG.')) {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+}
 
 const sendEmail = async (options) => {
 

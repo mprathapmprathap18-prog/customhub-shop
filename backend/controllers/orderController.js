@@ -14,32 +14,44 @@ exports.newOrder = asyncErrorHandler(async (req, res, next) => {
         totalPrice,
     } = req.body;
 
-    const orderExist = await Order.findOne({ paymentInfo });
+    const safePaymentInfo = {
+        id: paymentInfo?.id || `COD_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
+        status: paymentInfo?.status || "Cash on Delivery",
+    };
 
-    if (orderExist) {
-        return next(new ErrorHandler("Order Already Placed", 400));
+    if (paymentInfo && paymentInfo.id && !paymentInfo.id.startsWith("COD_") && !paymentInfo.id.startsWith("WA_")) {
+        const orderExist = await Order.findOne({ "paymentInfo.id": paymentInfo.id });
+        if (orderExist) {
+            return next(new ErrorHandler("Order Already Placed", 400));
+        }
     }
 
     const order = await Order.create({
         shippingInfo,
         orderItems,
-        paymentInfo,
+        paymentInfo: safePaymentInfo,
         totalPrice,
         paidAt: Date.now(),
         user: req.user._id,
     });
 
-    await sendEmail({
-        email: req.user.email,
-        templateId: process.env.SENDGRID_ORDER_TEMPLATEID,
-        data: {
-            name: req.user.name,
-            shippingInfo,
-            orderItems,
-            totalPrice,
-            oid: order._id,
+    if (process.env.SENDGRID_API_KEY && process.env.SENDGRID_ORDER_TEMPLATEID) {
+        try {
+            await sendEmail({
+                email: req.user.email,
+                templateId: process.env.SENDGRID_ORDER_TEMPLATEID,
+                data: {
+                    name: req.user.name,
+                    shippingInfo,
+                    orderItems,
+                    totalPrice,
+                    oid: order._id,
+                }
+            });
+        } catch (err) {
+            console.error("Order notification email failed:", err.message);
         }
-    });
+    }
 
     res.status(201).json({
         success: true,

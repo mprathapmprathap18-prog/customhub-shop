@@ -22,8 +22,8 @@ const Stepper = ({ activeStep, children }) => {
             desc: <p className="font-medium text-sm">{cartItems.length} Item</p>
         },
         {
-            label: "PAYMENT OPTIONS",
-            desc: <p className="font-medium text-sm">Paytm</p>
+            label: "ORDER METHOD",
+            desc: <p className="font-medium text-sm">WhatsApp Order / Cash on Delivery</p>
         }
     ]
 

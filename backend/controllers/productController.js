@@ -69,6 +69,11 @@ exports.getAdminProducts = asyncErrorHandler(async (req, res, next) => {
 // Create Product ---ADMIN
 exports.createProduct = asyncErrorHandler(async (req, res, next) => {
 
+    // Check if Cloudinary is configured
+    if (!process.env.CLOUDINARY_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+        return next(new ErrorHandler("Image upload service not configured. Please contact administrator.", 503));
+    }
+
     let images = [];
     if (typeof req.body.images === "string") {
         images.push(req.body.images);
@@ -128,6 +133,11 @@ exports.updateProduct = asyncErrorHandler(async (req, res, next) => {
     }
 
     if (req.body.images !== undefined) {
+        // Check if Cloudinary is configured
+        if (!process.env.CLOUDINARY_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+            return next(new ErrorHandler("Image upload service not configured. Please contact administrator.", 503));
+        }
+
         let images = [];
         if (typeof req.body.images === "string") {
             images.push(req.body.images);
@@ -154,6 +164,11 @@ exports.updateProduct = asyncErrorHandler(async (req, res, next) => {
     }
 
     if (req.body.logo.length > 0) {
+        // Check if Cloudinary is configured
+        if (!process.env.CLOUDINARY_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+            return next(new ErrorHandler("Image upload service not configured. Please contact administrator.", 503));
+        }
+
         await cloudinary.v2.uploader.destroy(product.brand.logo.public_id);
         const result = await cloudinary.v2.uploader.upload(req.body.logo, {
             folder: "brands",

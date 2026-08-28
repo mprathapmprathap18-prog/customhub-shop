@@ -1,7 +1,7 @@
-# Flipkart - MERN
-Full-Stack Flipkart with Admin Dashboard & Paytm Payment Gateway.
+# Toy Shop - MERN
+Full-Stack Toy Shop with Admin Dashboard & Paytm Payment Gateway.
 
-[Visit Now](https://flipkartweb-mern.vercel.app) 🚀
+[Visit Now](#) 🚀
 
 ## 🖥️ Tech Stack
 **Frontend:**

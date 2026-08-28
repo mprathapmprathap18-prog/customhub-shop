@@ -120,7 +120,7 @@ const OrderTable = () => {
 
     return (
         <>
-            <MetaData title="Admin Orders | Flipkart" />
+            <MetaData title="Admin Orders | CustomHub Gift Shop" />
 
             {loading && <BackdropLoader />}
 

@@ -7,6 +7,7 @@ import Loader from '../Layouts/Loader';
 import TrackStepper from './TrackStepper';
 import MinCategory from '../Layouts/MinCategory';
 import MetaData from '../Layouts/MetaData';
+import ShopInfo from '../Common/ShopInfo';
 
 const OrderDetails = () => {
 
@@ -26,7 +27,7 @@ const OrderDetails = () => {
 
     return (
         <>
-            <MetaData title="Order Details | Flipkart" />
+            <MetaData title="Order Details | CustomHub Gift Shop" />
 
             <MinCategory />
             <main className="w-full mt-14 sm:mt-4">
@@ -52,6 +53,9 @@ const OrderDetails = () => {
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* Shop Owner Info Card */}
+                                <ShopInfo variant="mini" />
 
                                 {order.orderItems && order.orderItems.map((item) => {
 
