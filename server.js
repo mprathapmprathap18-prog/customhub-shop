@@ -25,24 +25,8 @@ if (process.env.CLOUDINARY_NAME && process.env.CLOUDINARY_API_KEY && process.env
     console.warn("⚠️  Cloudinary not configured - Image uploads will be disabled. Please set CLOUDINARY_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET");
 }
 
-// deployment
-const fs = require('fs');
-const buildPath = path.join(path.resolve(), 'frontend', 'build');
-
-if (fs.existsSync(path.join(buildPath, 'index.html'))) {
-    app.use(express.static(buildPath));
-
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(buildPath, 'index.html'));
-    });
-} else {
-    app.get('/', (req, res) => {
-        res.send('Server is Running! 🚀');
-    });
-}
-
 const server = app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`)
+    console.log(`Server running on http://localhost:${PORT}`);
 });
 
 // Unhandled Promise Rejection

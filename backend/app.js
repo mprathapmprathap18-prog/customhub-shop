@@ -16,6 +16,9 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 
+const path = require('path');
+const fs = require('fs');
+
 const user = require('./routes/userRoute');
 const product = require('./routes/productRoute');
 const order = require('./routes/orderRoute');
@@ -29,6 +32,16 @@ app.use('/api/v1', order);
 app.use('/api/v1', payment);
 app.use('/api/v1', shop);
 app.use('/api/v1', owner);
+
+// Serve Static Frontend Files
+const buildPath = path.resolve(__dirname, '../frontend/build');
+if (fs.existsSync(path.join(buildPath, 'index.html'))) {
+    app.use(express.static(buildPath));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(buildPath, 'index.html'));
+    });
+}
 
 // error middleware
 app.use(errorMiddleware);
