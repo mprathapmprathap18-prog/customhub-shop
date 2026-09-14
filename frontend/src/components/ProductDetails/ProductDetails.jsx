@@ -106,6 +106,10 @@ const ProductDetails = () => {
     }
 
     useEffect(() => {
+        dispatch(getProductDetails(productId));
+    }, [dispatch, productId]);
+
+    useEffect(() => {
         if (error) {
             enqueueSnackbar(error, { variant: "error" });
             dispatch(clearErrors());
@@ -118,19 +122,19 @@ const ProductDetails = () => {
             enqueueSnackbar("Review Submitted Successfully", { variant: "success" });
             dispatch({ type: NEW_REVIEW_RESET });
         }
-        dispatch(getProductDetails(productId));
-        // eslint-disable-next-line
-    }, [dispatch, productId, error, reviewError, success, enqueueSnackbar]);
+    }, [dispatch, error, reviewError, success, enqueueSnackbar]);
 
     useEffect(() => {
-        dispatch(getSimilarProducts(product?.category));
-    }, [dispatch, product, product.category]);
+        if (product && product.category) {
+            dispatch(getSimilarProducts(product.category));
+        }
+    }, [dispatch, product?.category]);
 
     return (
         <>
-            {loading ? <Loader /> : (
+            {loading || !product || !product.name ? <Loader /> : (
                 <>
-                    <MetaData title={product.name} />
+                    <MetaData title={product?.name || "Product Details"} />
                     <MinCategory />
                     <main className="mt-12 sm:mt-0">
 

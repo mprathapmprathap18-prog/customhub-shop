@@ -52,12 +52,15 @@ const Products = () => {
     }
 
     useEffect(() => {
+        dispatch(getProducts(keyword, category, price, ratings, currentPage));
+    }, [dispatch, keyword, category, price[0], price[1], ratings, currentPage]);
+
+    useEffect(() => {
         if (error) {
             enqueueSnackbar(error, { variant: "error" });
             dispatch(clearErrors());
         }
-        dispatch(getProducts(keyword, category, price, ratings, currentPage));
-    }, [dispatch, keyword, category, price, ratings, currentPage, error, enqueueSnackbar]);
+    }, [dispatch, error, enqueueSnackbar]);
 
     return (
         <>

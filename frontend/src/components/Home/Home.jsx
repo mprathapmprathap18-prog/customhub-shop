@@ -16,11 +16,14 @@ const Home = () => {
   const { error, loading } = useSelector((state) => state.products);
 
   useEffect(() => {
+    dispatch(getSliderProducts());
+  }, [dispatch]);
+
+  useEffect(() => {
     if (error) {
       enqueueSnackbar(error, { variant: "error" });
       dispatch(clearErrors());
     }
-    dispatch(getSliderProducts());
   }, [dispatch, error, enqueueSnackbar]);
 
   return (
