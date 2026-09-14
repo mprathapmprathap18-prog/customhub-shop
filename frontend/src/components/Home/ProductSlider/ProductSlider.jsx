@@ -7,8 +7,12 @@ import Product from './Product';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const ProductSlider = ({ title, tagline }) => {
-
     const { loading, products } = useSelector((state) => state.products);
+    const sliderProducts = getRandomProducts(products, 12);
+
+    if (loading || !sliderProducts || sliderProducts.length === 0) {
+        return null;
+    }
 
     return (
         <section className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-5 my-1 overflow-hidden">
@@ -28,15 +32,13 @@ const ProductSlider = ({ title, tagline }) => {
             </div>
 
             {/* Product Slider */}
-            {loading ? null : (
-                <div className="pt-2 -mx-1.5">
-                    <Slider {...settings} className="custom-product-slider">
-                        {products && getRandomProducts(products, 12).map((product) => (
-                            <Product {...product} key={product._id} />
-                        ))}
-                    </Slider>
-                </div>
-            )}
+            <div className="pt-2 -mx-1.5">
+                <Slider {...settings} className="custom-product-slider">
+                    {sliderProducts.map((product) => (
+                        <Product {...product} key={product._id} />
+                    ))}
+                </Slider>
+            </div>
         </section>
     );
 };

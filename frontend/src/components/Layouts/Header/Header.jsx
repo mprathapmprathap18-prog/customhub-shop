@@ -63,7 +63,7 @@ const Header = () => {
           </a>
 
           {/* User Auth / Account */}
-          {isAuthenticated === false ? (
+          {!isAuthenticated ? (
             <Link 
               to="/login" 
               className="px-4 py-1.5 text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 rounded-lg shadow-sm hover:shadow transition duration-150"
@@ -76,10 +76,10 @@ const Header = () => {
                 className="userDropDown flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 rounded-lg transition"
                 onClick={() => setTogglePrimaryDropDown(!togglePrimaryDropDown)}
               >
-                <span>{user.name && user.name.split(" ", 1)}</span>
+                <span>{user && user.name ? user.name.split(" ", 1)[0] : 'Account'}</span>
                 {togglePrimaryDropDown ? <ExpandLessIcon sx={{ fontSize: "16px" }} /> : <ExpandMoreIcon sx={{ fontSize: "16px" }} />}
               </button>
-              {togglePrimaryDropDown && <PrimaryDropDownMenu setTogglePrimaryDropDown={setTogglePrimaryDropDown} user={user} />}
+              {togglePrimaryDropDown && user && <PrimaryDropDownMenu setTogglePrimaryDropDown={setTogglePrimaryDropDown} user={user} />}
             </div>
           )}
 

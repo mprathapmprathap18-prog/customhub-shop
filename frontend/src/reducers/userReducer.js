@@ -42,12 +42,13 @@ import {
     REMOVE_USER_DETAILS,
 } from '../constants/userConstants';
 
-export const userReducer = (state = { user: {} }, { type, payload }) => {
+export const userReducer = (state = { user: null, isAuthenticated: false, loading: false }, { type, payload }) => {
     switch (type) {
         case LOGIN_USER_REQUEST:
         case REGISTER_USER_REQUEST:
         case LOAD_USER_REQUEST:
             return {
+                ...state,
                 loading: true,
                 isAuthenticated: false,
             };
@@ -59,12 +60,14 @@ export const userReducer = (state = { user: {} }, { type, payload }) => {
                 loading: false,
                 isAuthenticated: true,
                 user: payload,
+                error: null,
             };
         case LOGOUT_USER_SUCCESS:
             return {
                 loading: false,
                 user: null,
                 isAuthenticated: false,
+                error: null,
             };
         case LOGIN_USER_FAIL:
         case REGISTER_USER_FAIL:
@@ -80,14 +83,14 @@ export const userReducer = (state = { user: {} }, { type, payload }) => {
                 loading: false,
                 isAuthenticated: false,
                 user: null,
-                error: payload,
-            }
+                error: null,
+            };
         case LOGOUT_USER_FAIL:
             return {
                 ...state,
                 loading: false,
                 error: payload,
-            }
+            };
         case CLEAR_ERRORS:
             return {
                 ...state,

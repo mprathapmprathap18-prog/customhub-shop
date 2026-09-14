@@ -12,7 +12,7 @@ export const settings = {
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 6,
-    initialSlide: 1,
+    initialSlide: 0,
     swipe: false,
     prevArrow: <PreviousBtn />,
     nextArrow: <NextBtn />,
@@ -49,6 +49,8 @@ export const settings = {
 };
 
 const DealSlider = ({ title }) => {
+    const productsList = getRandomProducts(offerProducts, 12);
+
     return (
         <section className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-5 my-1 overflow-hidden">
             {/* Header */}
@@ -64,13 +66,15 @@ const DealSlider = ({ title }) => {
             </div>
 
             {/* Slider */}
-            <div className="pt-2 -mx-1.5">
-                <Slider {...settings}>
-                    {getRandomProducts(offerProducts, 12).map((item, i) => (
-                        <Product {...item} key={i} />
-                    ))}
-                </Slider>
-            </div>
+            {productsList.length > 0 && (
+                <div className="pt-2 -mx-1.5">
+                    <Slider {...settings}>
+                        {productsList.map((item, i) => (
+                            <Product {...item} key={i} />
+                        ))}
+                    </Slider>
+                </div>
+            )}
         </section>
     );
 };

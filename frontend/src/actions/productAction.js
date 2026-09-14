@@ -52,7 +52,7 @@ export const getProducts =
         } catch (error) {
             dispatch({
                 type: ALL_PRODUCTS_FAIL,
-                payload: error.response.data.message,
+                payload: error.response?.data?.message || error.message || "An error occurred",
             });
         }
     };
@@ -71,7 +71,7 @@ export const getSimilarProducts = (category) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: ALL_PRODUCTS_FAIL,
-            payload: error.response.data.message,
+            payload: error.response?.data?.message || error.message || "An error occurred",
         });
     }
 };
@@ -90,7 +90,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: PRODUCT_DETAILS_FAIL,
-            payload: error.response.data.message,
+            payload: error.response?.data?.message || error.message || "An error occurred",
         });
     }
 };
@@ -109,7 +109,7 @@ export const newReview = (reviewData) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: NEW_REVIEW_FAIL,
-            payload: error.response.data.message,
+            payload: error.response?.data?.message || error.message || "An error occurred",
         });
     }
 }
@@ -128,7 +128,7 @@ export const getSliderProducts = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: SLIDER_PRODUCTS_FAIL,
-            payload: error.response.data.message,
+            payload: error.response?.data?.message || error.message || "An error occurred",
         });
     }
 };
@@ -147,7 +147,7 @@ export const getAdminProducts = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: ADMIN_PRODUCTS_FAIL,
-            payload: error.response.data.message,
+            payload: error.response?.data?.message || error.message || "An error occurred",
         });
     }
 };
@@ -166,7 +166,7 @@ export const createProduct = (productData) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: NEW_PRODUCT_FAIL,
-            payload: error.response.data.message,
+            payload: error.response?.data?.message || error.message || "An error occurred",
         });
     }
 }
@@ -185,7 +185,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: UPDATE_PRODUCT_FAIL,
-            payload: error.response.data.message,
+            payload: error.response?.data?.message || error.message || "An error occurred",
         });
     }
 }
@@ -203,7 +203,7 @@ export const deleteProduct = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: DELETE_PRODUCT_FAIL,
-            payload: error.response.data.message,
+            payload: error.response?.data?.message || error.message || "An error occurred",
         });
     }
 }
@@ -221,7 +221,7 @@ export const getAllReviews = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: ALL_REVIEWS_FAIL,
-            payload: error.response.data.message,
+            payload: error.response?.data?.message || error.message || "An error occurred",
         });
     }
 }
@@ -239,7 +239,7 @@ export const deleteReview = (reviewId, productId) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: DELETE_REVIEW_FAIL,
-            payload: error.response.data.message,
+            payload: error.response?.data?.message || error.message || "An error occurred",
         });
     }
 }
