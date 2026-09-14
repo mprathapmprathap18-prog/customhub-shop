@@ -4,7 +4,12 @@ const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 const errorMiddleware = require('./middlewares/error');
 
+const compression = require('compression');
+
 const app = express();
+
+// Gzip compression for high-speed download
+app.use(compression());
 
 // config
 if (process.env.NODE_ENV !== 'production') {
@@ -42,12 +47,21 @@ app.use('/api/v1', payment);
 app.use('/api/v1', shop);
 app.use('/api/v1', owner);
 
-// Serve Static Frontend Files
+// Serve Static Frontend Files with asset caching
 const buildPath = path.resolve(__dirname, '../frontend/build');
 if (fs.existsSync(path.join(buildPath, 'index.html'))) {
-    app.use(express.static(buildPath));
+    app.use(express.static(buildPath, {
+        maxAge: '1y',
+        etag: true,
+        setHeaders: (res, filePath) => {
+            if (filePath.endsWith('.html')) {
+                res.setHeader('Cache-Control', 'no-cache');
+            }
+        }
+    }));
 
     app.get('*', (req, res) => {
+        res.setHeader('Cache-Control', 'no-cache');
         res.sendFile(path.join(buildPath, 'index.html'));
     });
 }

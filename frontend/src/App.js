@@ -1,12 +1,12 @@
-import WebFont from 'webfontloader';
+import { lazy, Suspense, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loadUser } from './actions/userAction';
+
 import Footer from './components/Layouts/Footer/Footer';
 import Header from './components/Layouts/Header/Header';
 import Login from './components/User/Login';
 import Register from './components/User/Register';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { loadUser } from './actions/userAction';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import UpdateProfile from './components/User/UpdateProfile';
 import UpdatePassword from './components/User/UpdatePassword';
 import ForgotPassword from './components/User/ForgotPassword';
@@ -25,23 +25,26 @@ import OrderStatus from './components/Cart/OrderStatus';
 import OrderSuccess from './components/Cart/OrderSuccess';
 import MyOrders from './components/Order/MyOrders';
 import OrderDetails from './components/Order/OrderDetails';
-import Dashboard from './components/Admin/Dashboard';
-import MainData from './components/Admin/MainData';
-import OrderTable from './components/Admin/OrderTable';
-import UpdateOrder from './components/Admin/UpdateOrder';
-import ProductTable from './components/Admin/ProductTable';
-import NewProduct from './components/Admin/NewProduct';
-import UpdateProduct from './components/Admin/UpdateProduct';
-import UserTable from './components/Admin/UserTable';
-import UpdateUser from './components/Admin/UpdateUser';
-import ReviewsTable from './components/Admin/ReviewsTable';
 import Wishlist from './components/Wishlist/Wishlist';
 import NotFound from './components/NotFound';
-import OwnerDashboard from './components/Owner/OwnerDashboard';
-import OwnerOrders from './components/Owner/OwnerOrders';
-import OwnerOrderDetail from './components/Owner/OwnerOrderDetail';
-import OwnerProducts from './components/Owner/OwnerProducts';
+import Loader from './components/Layouts/Loader';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+
+// Code-split heavy Admin & Owner dashboards for lightweight customer bundle
+const Dashboard = lazy(() => import('./components/Admin/Dashboard'));
+const MainData = lazy(() => import('./components/Admin/MainData'));
+const OrderTable = lazy(() => import('./components/Admin/OrderTable'));
+const UpdateOrder = lazy(() => import('./components/Admin/UpdateOrder'));
+const ProductTable = lazy(() => import('./components/Admin/ProductTable'));
+const NewProduct = lazy(() => import('./components/Admin/NewProduct'));
+const UpdateProduct = lazy(() => import('./components/Admin/UpdateProduct'));
+const UserTable = lazy(() => import('./components/Admin/UserTable'));
+const UpdateUser = lazy(() => import('./components/Admin/UpdateUser'));
+const ReviewsTable = lazy(() => import('./components/Admin/ReviewsTable'));
+const OwnerDashboard = lazy(() => import('./components/Owner/OwnerDashboard'));
+const OwnerOrders = lazy(() => import('./components/Owner/OwnerOrders'));
+const OwnerOrderDetail = lazy(() => import('./components/Owner/OwnerOrderDetail'));
+const OwnerProducts = lazy(() => import('./components/Owner/OwnerProducts'));
 
 function App() {
 
@@ -53,14 +56,6 @@ function App() {
   //   const { data } = await axios.get('/api/v1/stripeapikey');
   //   setStripeApiKey(data.stripeApiKey);
   // }
-
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ["Roboto:300,400,500,600,700"]
-      },
-    });
-  }, []);
 
   useEffect(() => {
     dispatch(loadUser());
@@ -78,7 +73,8 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -261,8 +257,8 @@ function App() {
         } ></Route>
 
         <Route path="*" element={<NotFound />}></Route>
-
       </Routes>
+      </Suspense>
       <Footer />
 
       {/* Floating WhatsApp Button */}
