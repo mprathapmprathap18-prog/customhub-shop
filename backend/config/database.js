@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI || process.env.DB_URI;
 
 const connectDatabase = () => {
     if (!MONGO_URI) {
