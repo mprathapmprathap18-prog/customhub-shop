@@ -56,7 +56,7 @@ const Banner = () => {
       subtitle: "High-definition sublimation heat-press for lasting memories.",
       ctaText: "Shop Custom Mugs",
       ctaLink: "/products?category=Custom%20Mugs",
-      bgGradient: "from-amber-500 via-orange-500 to-rose-500",
+      bgGradient: "from-amber-500 via-amber-600 to-slate-900",
       accentEmoji: "☕✨",
     },
     {
@@ -65,7 +65,7 @@ const Banner = () => {
       subtitle: "Custom photo frames, chocolates, hampers & surprise boxes.",
       ctaText: "Explore Gift Hampers",
       ctaLink: "/products?category=Gift%20Hampers",
-      bgGradient: "from-indigo-600 via-purple-600 to-pink-500",
+      bgGradient: "from-slate-900 via-slate-800 to-amber-500",
       accentEmoji: "🎁🎉",
     },
     {
@@ -75,7 +75,7 @@ const Banner = () => {
       ctaText: "Order on WhatsApp",
       ctaLink: "https://api.whatsapp.com/send?phone=917550079573&text=Hi%20Kaaviyaselvan,%20I%20want%20to%20place%20a%20custom%20gift%20order!",
       isExternal: true,
-      bgGradient: "from-emerald-600 via-teal-600 to-cyan-600",
+      bgGradient: "from-amber-600 via-slate-800 to-gray-950",
       accentEmoji: "💬💵",
     },
   ];

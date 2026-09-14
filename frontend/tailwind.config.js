@@ -26,15 +26,16 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
-      // custom colors
+      // custom colors for Yellow & Gray theme
       primary: {
-        blue: '#EAB308',
-        lightGreen: '#14be47',
-        green: '#388e3c',
-        yellow: '#FACC15',
-        orange: '#4B5563',
-        darkBlue: '#4B5563',
-        grey: '#6B7280',
+        blue: '#F59E0B',
+        lightGreen: '#10B981',
+        green: '#059669',
+        yellow: '#FBBF24',
+        orange: '#D97706',
+        darkBlue: '#1E293B',
+        grey: '#475569',
+        lightGrey: '#F1F5F9',
       },
     },
     spacing: {
