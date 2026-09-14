@@ -25,16 +25,16 @@ const Home = () => {
 
   return (
     <>
-      <MetaData title="CustomHub Gift Shop | Personalized Gifts, Hampers & More" />
+      <MetaData title="Custom Hub | Sublimation Mugs, T-Shirts, Photo Frames & Personalized Gifts" />
       <Categories />
-      <main className="flex flex-col gap-3 px-2 mt-16 sm:mt-2">
+      <main className="max-w-7xl mx-auto flex flex-col gap-4 px-3 sm:px-6 my-4">
         <Banner />
-        <DealSlider title={"Gift Ideas For Every Occasion"} />
-        {!loading && <ProductSlider title={"Popular Gifts For You"} tagline={"Handpicked for birthdays & more"} />}
-        <DealSlider title={"Best Selling Hampers"} />
-        {!loading && <ProductSlider title={"Personalized Gifts"} tagline={"Add a name, photo or message"} />}
-        <DealSlider title={"Birthday & Anniversary Picks"} />
-        {!loading && <ProductSlider title={"Trending Now"} tagline={"What shoppers are gifting"} />}
+        <DealSlider title={"Popular Sublimation & Gift Ideas"} />
+        {!loading && <ProductSlider title={"Featured Custom Gifts"} tagline={"Personalize with your photos, names & memories"} />}
+        <DealSlider title={"Best Selling Hampers & Combos"} />
+        {!loading && <ProductSlider title={"Custom Printed Mugs & Frames"} tagline={"Heat-press sublimation printing made to order"} />}
+        <DealSlider title={"Birthday & Special Occasion Picks"} />
+        {!loading && <ProductSlider title={"Trending Now"} tagline={"Loved by customers across India"} />}
       </main>
     </>
   );
