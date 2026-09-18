@@ -73,7 +73,7 @@ const ForgotPassword = () => {
 
                                     {/* <!-- button container --> */}
                                     <div className="flex flex-col gap-2.5 mt-2 mb-32">
-                                        <p className="text-xs text-primary-grey text-left">By continuing, you agree to CustomHub Gift Shop's <a href="#" className="text-primary-blue"> Terms of Use</a> and <a href="#" className="text-primary-blue"> Privacy Policy.</a></p>
+                                        <p className="text-xs text-primary-grey text-left">By continuing, you agree to CustomHub Gift Shop's <span className="text-primary-blue">Terms of Use</span> and <span className="text-primary-blue">Privacy Policy.</span></p>
                                         <button type="submit" className="text-white py-3 w-full bg-primary-orange shadow rounded-sm font-medium">Submit</button>
                                     </div>
                                     {/* <!-- button container --> */}

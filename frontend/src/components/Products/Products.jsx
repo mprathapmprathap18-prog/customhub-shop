@@ -17,7 +17,6 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import StarIcon from '@mui/icons-material/Star';
 import { categories } from '../../utils/constants';
 import MetaData from '../Layouts/MetaData';
-import { getRandomProducts } from '../../utils/functions';
 import { useLocation } from 'react-router-dom';
 
 const Products = () => {
@@ -38,7 +37,7 @@ const Products = () => {
     const [categoryToggle, setCategoryToggle] = useState(true);
     const [ratingsToggle, setRatingsToggle] = useState(true);
 
-    const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } = useSelector((state) => state.products);
+    const { products, loading, error, resultPerPage, filteredProductsCount } = useSelector((state) => state.products);
     const keyword = params.keyword;
 
     const priceHandler = (e, newPrice) => {
@@ -51,9 +50,13 @@ const Products = () => {
         setRatings(0);
     }
 
+    const minPrice = price[0];
+    const maxPrice = price[1];
+
     useEffect(() => {
-        dispatch(getProducts(keyword, category, price, ratings, currentPage));
-    }, [dispatch, keyword, category, price[0], price[1], ratings, currentPage]);
+        dispatch(getProducts(keyword, category, [minPrice, maxPrice], ratings, currentPage));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dispatch, keyword, category, minPrice, maxPrice, ratings, currentPage]);
 
     useEffect(() => {
         if (error) {

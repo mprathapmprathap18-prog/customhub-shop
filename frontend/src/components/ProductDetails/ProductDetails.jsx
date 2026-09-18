@@ -128,6 +128,7 @@ const ProductDetails = () => {
         if (product && product.category) {
             dispatch(getSimilarProducts(product.category));
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, product?.category]);
 
     return (

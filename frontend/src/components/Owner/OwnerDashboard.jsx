@@ -5,7 +5,7 @@ import { useSnackbar } from 'notistack';
 import MetaData from '../Layouts/MetaData';
 import Loader from '../Layouts/Loader';
 import ShopInfo from '../Common/ShopInfo';
-import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 
 const OwnerDashboard = () => {
     const dispatch = useDispatch();

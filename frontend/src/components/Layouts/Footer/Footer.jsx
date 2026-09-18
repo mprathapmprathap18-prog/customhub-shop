@@ -1,4 +1,3 @@
-import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';

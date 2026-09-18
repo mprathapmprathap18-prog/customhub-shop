@@ -8,7 +8,6 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import PrintIcon from '@mui/icons-material/Print';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PaymentsIcon from '@mui/icons-material/Payments';
-import VerifiedIcon from '@mui/icons-material/Verified';
 import { Link } from 'react-router-dom';
 
 export const PreviousBtn = ({ className, onClick }) => {
