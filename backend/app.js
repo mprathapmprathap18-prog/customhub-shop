@@ -48,7 +48,7 @@ const owner = require('./routes/ownerRoute');
 
 // Health check & keep-alive endpoints
 app.get('/api/v1/health', (req, res) => {
-    res.status(200).json({ status: 'OK', message: 'Custom Hub Server is Active 🚀', timestamp: new Date() });
+    res.status(200).json({ status: 'OK', version: '2026-v1.2-jwt-fix', message: 'Custom Hub Server is Active 🚀', timestamp: new Date() });
 });
 
 app.get('/ping', (req, res) => {
