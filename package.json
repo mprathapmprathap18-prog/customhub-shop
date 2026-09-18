@@ -9,6 +9,7 @@
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "build": "npm install --prefix frontend --legacy-peer-deps && npm run build --prefix frontend",
+    "vercel-build": "npm install --prefix frontend --legacy-peer-deps && npm run build --prefix frontend",
     "render-postbuild": "npm install --prefix frontend --legacy-peer-deps && npm run build --prefix frontend"
   },
   "author": "Jigar Sable",
