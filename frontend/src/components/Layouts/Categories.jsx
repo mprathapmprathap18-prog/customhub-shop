@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 
 const categoriesList = [
-    { name: "Custom Mugs", emoji: "☕", badge: "Sublimation", gradient: "from-amber-400 to-amber-600" },
-    { name: "Personalized Gifts", emoji: "🎁", badge: "Hot", gradient: "from-yellow-400 to-slate-800" },
+    { name: "Toy Cars & Diecast", emoji: "🚗", badge: "Trending", gradient: "from-blue-600 to-indigo-900" },
+    { name: "Night Lamps & Decor", emoji: "💡", badge: "New", gradient: "from-amber-400 to-orange-500" },
+    { name: "Custom Mugs", emoji: "☕", badge: "Sublimation", gradient: "from-amber-500 to-amber-700" },
     { name: "Photo Frames", emoji: "🖼️", badge: "Popular", gradient: "from-slate-700 to-slate-900" },
-    { name: "Gift Hampers", emoji: "🧺", badge: "Combos", gradient: "from-amber-500 to-slate-800" },
+    { name: "Personalized Gifts", emoji: "🎁", badge: "Hot", gradient: "from-yellow-400 to-amber-600" },
+    { name: "Gift Hampers", emoji: "🧺", badge: "Combos", gradient: "from-emerald-500 to-teal-800" },
+    { name: "Greeting Cards", emoji: "💌", badge: "Custom", gradient: "from-rose-400 to-pink-600" },
     { name: "Flowers", emoji: "💐", badge: "Fresh", gradient: "from-emerald-500 to-slate-700" },
     { name: "Chocolates", emoji: "🍫", badge: "Sweet", gradient: "from-amber-700 to-slate-900" },
-    { name: "Greeting Cards", emoji: "💌", badge: "Custom", gradient: "from-amber-400 to-yellow-600" },
-    { name: "Jewelry", emoji: "✨", badge: "Premium", gradient: "from-slate-600 to-amber-500" },
-    { name: "Soft Toys", emoji: "🧸", badge: "Cute", gradient: "from-amber-500 to-amber-700" },
 ];
 
 const Categories = () => {

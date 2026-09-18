@@ -41,8 +41,18 @@ const Cart = () => {
                             )}
 
                             {/* <!-- place order btn --> */}
-                            <div className="flex justify-end">
-                                <button onClick={placeOrderHandler} disabled={cartItems.length < 1 ? true : false} className={`${cartItems.length < 1 ? "bg-primary-grey cursor-not-allowed" : "bg-primary-orange"} w-full sm:w-1/3 mx-2 sm:mx-6 my-4 py-3 font-medium text-white shadow hover:shadow-lg rounded-sm`}>PLACE ORDER</button>
+                            <div className="flex justify-end p-3">
+                                <button 
+                                    onClick={placeOrderHandler} 
+                                    disabled={cartItems.length < 1} 
+                                    className={`${
+                                        cartItems.length < 1 
+                                            ? "bg-slate-300 cursor-not-allowed text-slate-500" 
+                                            : "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white shadow-md hover:shadow-xl active:scale-95"
+                                    } w-full sm:w-1/3 mx-2 sm:mx-6 my-2 py-3 font-bold uppercase tracking-wider text-sm rounded-xl transition-all duration-200`}
+                                >
+                                    PLACE ORDER
+                                </button>
                             </div>
                             {/* <!-- place order btn --> */}
 

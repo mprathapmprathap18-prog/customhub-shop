@@ -152,33 +152,45 @@ const ProductDetails = () => {
                                                 <img draggable="false" className="w-full h-96 object-contain" src={item.url} alt={product.name} key={i} />
                                             ))}
                                         </Slider>
-                                        <div className="absolute top-4 right-4 shadow-lg bg-white w-9 h-9 border flex items-center justify-center rounded-full">
-                                            <span onClick={addToWishlistHandler} className={`${itemInWishlist ? "text-red-500" : "hover:text-red-500 text-gray-300"} cursor-pointer`}><FavoriteIcon sx={{ fontSize: "18px" }} /></span>
+                                        <div className="absolute top-4 right-4 shadow-md bg-white/90 backdrop-blur-sm w-10 h-10 border border-slate-100 flex items-center justify-center rounded-full transition-transform duration-200 hover:scale-110">
+                                            <button onClick={addToWishlistHandler} className={`${itemInWishlist ? "text-rose-500" : "hover:text-rose-500 text-slate-300"} transition`}>
+                                                <FavoriteIcon sx={{ fontSize: 20 }} />
+                                            </button>
                                         </div>
                                     </div>
 
                                     <div className="w-full flex flex-col gap-2.5">
                                         <div className="w-full flex gap-3">
-                                            {/* <!-- add to cart btn --> */}
+                                            {/* <!-- add to cart btn (Midnight Indigo Gradient) --> */}
                                             {product.stock > 0 && (
-                                                <button onClick={itemInCart ? goToCart : addToCartHandler} className="p-3.5 w-1/2 flex items-center justify-center gap-2 text-white bg-primary-yellow rounded-sm shadow hover:shadow-lg font-medium text-sm">
-                                                    <ShoppingCartIcon sx={{ fontSize: 18 }} />
-                                                    {itemInCart ? "GO TO CART" : "ADD TO CART"}
+                                                <button 
+                                                    onClick={itemInCart ? goToCart : addToCartHandler} 
+                                                    className="p-3.5 w-1/2 flex items-center justify-center gap-2 text-white bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 hover:from-slate-800 hover:to-indigo-900 rounded-xl shadow-md hover:shadow-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all duration-200"
+                                                >
+                                                    <ShoppingCartIcon sx={{ fontSize: 19 }} />
+                                                    <span>{itemInCart ? "GO TO CART" : "ADD TO CART"}</span>
                                                 </button>
                                             )}
-                                            <button onClick={buyNow} disabled={product.stock < 1 ? true : false} className={product.stock < 1 ? "p-3.5 w-full flex items-center justify-center gap-2 text-white bg-red-600 cursor-not-allowed rounded-sm shadow hover:shadow-lg font-medium text-sm" : "p-3.5 w-1/2 flex items-center justify-center gap-2 text-white bg-primary-orange rounded-sm shadow hover:shadow-lg font-medium text-sm"}>
-                                                <FlashOnIcon sx={{ fontSize: 18 }} />
-                                                {product.stock < 1 ? "OUT OF STOCK" : "BUY NOW (COD)"}
+                                            {/* <!-- buy now btn (Electric Amber Gradient) --> */}
+                                            <button 
+                                                onClick={buyNow} 
+                                                disabled={product.stock < 1} 
+                                                className={product.stock < 1 
+                                                    ? "p-3.5 w-full flex items-center justify-center gap-2 text-white bg-slate-400 cursor-not-allowed rounded-xl font-bold text-sm uppercase tracking-wide" 
+                                                    : "p-3.5 w-1/2 flex items-center justify-center gap-2 text-white bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 rounded-xl shadow-md hover:shadow-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all duration-200"
+                                                }
+                                            >
+                                                <FlashOnIcon sx={{ fontSize: 19 }} />
+                                                <span>{product.stock < 1 ? "OUT OF STOCK" : "BUY NOW (COD)"}</span>
                                             </button>
-                                            {/* <!-- add to cart btn --> */}
                                         </div>
 
-                                        {/* Direct WhatsApp Order button */}
+                                        {/* Direct WhatsApp Order button (Vibrant Emerald Gradient) */}
                                         <a
-                                            href={`https://api.whatsapp.com/send?phone=917550079573&text=${encodeURIComponent(`👋 Hello Kaaviyaselvan, I want to order this product from Custom Hub Sublimation Shop:\n\n*Product:* ${product.name}\n*Price:* ₹${product.price}\n\nPlease let me know how to share my photo/text for sublimation printing & delivery address.`)}`}
+                                            href={`https://api.whatsapp.com/send?phone=917550079573&text=${encodeURIComponent(`👋 Hello Kaaviyaselvan, I want to order this product from Custom Hub:\n\n*Product:* ${product.name}\n*Price:* ₹${product.price}\n\nPlease let me know how to share my photo/text for customization & delivery address.`)}`}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="p-3 w-full flex items-center justify-center gap-2 text-white bg-green-600 hover:bg-green-700 rounded-sm shadow hover:shadow-lg font-bold text-sm uppercase transition cursor-pointer"
+                                            className="p-3.5 w-full flex items-center justify-center gap-2 text-white bg-gradient-to-r from-emerald-500 via-teal-600 to-green-600 hover:from-emerald-600 hover:to-teal-700 rounded-xl shadow-md hover:shadow-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all duration-200 cursor-pointer"
                                         >
                                             <WhatsAppIcon sx={{ fontSize: 20 }} />
                                             <span>Order on WhatsApp (Direct Chat)</span>
