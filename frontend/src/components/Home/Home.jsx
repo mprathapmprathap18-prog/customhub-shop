@@ -13,7 +13,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
-  const { error, loading } = useSelector((state) => state.products);
+  const { error } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getSliderProducts());
@@ -32,12 +32,10 @@ const Home = () => {
       <Categories />
       <main className="max-w-7xl mx-auto flex flex-col gap-4 px-3 sm:px-6 my-4">
         <Banner />
+        <ProductSlider title={"Featured Custom Gifts"} tagline={"Personalize with your photos, names & memories"} />
         <DealSlider title={"Popular Sublimation & Gift Ideas"} />
-        {!loading && <ProductSlider title={"Featured Custom Gifts"} tagline={"Personalize with your photos, names & memories"} />}
+        <ProductSlider title={"Custom Printed Mugs & Frames"} tagline={"Heat-press sublimation printing made to order"} />
         <DealSlider title={"Best Selling Hampers & Combos"} />
-        {!loading && <ProductSlider title={"Custom Printed Mugs & Frames"} tagline={"Heat-press sublimation printing made to order"} />}
-        <DealSlider title={"Birthday & Special Occasion Picks"} />
-        {!loading && <ProductSlider title={"Trending Now"} tagline={"Loved by customers across India"} />}
       </main>
     </>
   );

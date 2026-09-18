@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import Product from './Product';
 import Slider from 'react-slick';
 import { NextBtn, PreviousBtn } from '../Banner/Banner';
@@ -49,7 +50,7 @@ export const settings = {
 };
 
 const DealSlider = ({ title }) => {
-    const productsList = getRandomProducts(offerProducts, 12);
+    const productsList = useMemo(() => getRandomProducts(offerProducts, 12), []);
 
     return (
         <section className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-5 my-1 overflow-hidden">

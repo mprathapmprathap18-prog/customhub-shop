@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
@@ -8,7 +9,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const ProductSlider = ({ title, tagline }) => {
     const { loading, products } = useSelector((state) => state.products);
-    const sliderProducts = getRandomProducts(products, 12);
+    const sliderProducts = useMemo(() => getRandomProducts(products, 12), [products]);
 
     if (loading || !sliderProducts || sliderProducts.length === 0) {
         return null;
