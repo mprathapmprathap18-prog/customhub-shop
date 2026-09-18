@@ -55,8 +55,9 @@ const Banner = () => {
       subtitle: "High-definition sublimation heat-press for lasting memories.",
       ctaText: "Shop Custom Mugs",
       ctaLink: "/products?category=Custom%20Mugs",
-      bgGradient: "from-amber-500 via-amber-600 to-slate-900",
+      bgGradient: "from-sky-600 via-slate-800 to-slate-900",
       accentEmoji: "☕✨",
+      btnColor: "bg-yellow-400 hover:bg-yellow-300 text-slate-900",
     },
     {
       badge: "🎁 PERSONALIZED GIFT HAMPERS",
@@ -64,8 +65,9 @@ const Banner = () => {
       subtitle: "Custom photo frames, chocolates, hampers & surprise boxes.",
       ctaText: "Explore Gift Hampers",
       ctaLink: "/products?category=Gift%20Hampers",
-      bgGradient: "from-slate-900 via-slate-800 to-amber-500",
+      bgGradient: "from-slate-900 via-slate-800 to-sky-700",
       accentEmoji: "🎁🎉",
+      btnColor: "bg-yellow-400 hover:bg-yellow-300 text-slate-900",
     },
     {
       badge: "🚚 KRISHNAGIRI & ALL-INDIA SHIPPING",
@@ -74,8 +76,9 @@ const Banner = () => {
       ctaText: "Order on WhatsApp",
       ctaLink: "https://api.whatsapp.com/send?phone=917550079573&text=Hi%20Kaaviyaselvan,%20I%20want%20to%20place%20a%20custom%20gift%20order!",
       isExternal: true,
-      bgGradient: "from-amber-600 via-slate-800 to-gray-950",
+      bgGradient: "from-yellow-500 via-amber-600 to-slate-900",
       accentEmoji: "💬💵",
+      btnColor: "bg-sky-500 hover:bg-sky-400 text-white",
     },
   ];
 
@@ -111,7 +114,7 @@ const Banner = () => {
                       href={el.ctaLink}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-5 py-2 sm:px-6 sm:py-2.5 bg-white text-emerald-700 font-bold text-xs sm:text-sm rounded-xl shadow-md hover:bg-emerald-50 hover:shadow-lg transition flex items-center gap-2"
+                      className={`px-5 py-2 sm:px-6 sm:py-2.5 ${el.btnColor} font-bold text-xs sm:text-sm rounded-xl shadow-md hover:shadow-lg transition flex items-center gap-2`}
                     >
                       <WhatsAppIcon sx={{ fontSize: 18 }} />
                       <span>{el.ctaText}</span>
@@ -119,7 +122,7 @@ const Banner = () => {
                   ) : (
                     <Link
                       to={el.ctaLink}
-                      className="px-5 py-2 sm:px-6 sm:py-2.5 bg-white text-slate-900 font-bold text-xs sm:text-sm rounded-xl shadow-md hover:bg-slate-50 hover:shadow-lg transition flex items-center gap-2"
+                      className={`px-5 py-2 sm:px-6 sm:py-2.5 ${el.btnColor} font-bold text-xs sm:text-sm rounded-xl shadow-md hover:shadow-lg transition flex items-center gap-2`}
                     >
                       <span>{el.ctaText}</span>
                       <span>→</span>
@@ -134,9 +137,9 @@ const Banner = () => {
       </section>
 
       {/* Trust & Value Proposition Bar */}
-      <section className="bg-white rounded-xl border border-slate-200/80 p-3 sm:p-4 shadow-xs grid grid-cols-2 md:grid-cols-4 gap-3 text-slate-700">
+      <section className="bg-white rounded-xl border border-slate-200 p-3 sm:p-4 shadow-xs grid grid-cols-2 md:grid-cols-4 gap-3 text-slate-700">
         <div className="flex items-center gap-2.5 p-2">
-          <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-yellow-100 text-yellow-700 flex items-center justify-center shrink-0">
             <PrintIcon sx={{ fontSize: 22 }} />
           </div>
           <div className="flex flex-col">
@@ -146,7 +149,7 @@ const Banner = () => {
         </div>
 
         <div className="flex items-center gap-2.5 p-2">
-          <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center shrink-0">
             <WhatsAppIcon sx={{ fontSize: 22 }} />
           </div>
           <div className="flex flex-col">
@@ -156,7 +159,7 @@ const Banner = () => {
         </div>
 
         <div className="flex items-center gap-2.5 p-2">
-          <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center shrink-0">
             <PaymentsIcon sx={{ fontSize: 22 }} />
           </div>
           <div className="flex flex-col">
@@ -166,7 +169,7 @@ const Banner = () => {
         </div>
 
         <div className="flex items-center gap-2.5 p-2">
-          <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center shrink-0">
             <LocalShippingIcon sx={{ fontSize: 22 }} />
           </div>
           <div className="flex flex-col">

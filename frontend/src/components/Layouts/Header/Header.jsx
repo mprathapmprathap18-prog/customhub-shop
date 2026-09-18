@@ -16,7 +16,7 @@ const Header = () => {
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
 
   return (
-    <header className="bg-white/95 backdrop-blur-md fixed top-0 py-2 w-full z-50 border-b border-slate-200/80 shadow-sm transition-all duration-200">
+    <header className="bg-white/95 backdrop-blur-md fixed top-0 py-2 w-full z-50 border-b border-slate-200 shadow-xs transition-all duration-200">
       <div className="w-full max-w-7xl px-3 sm:px-6 m-auto flex justify-between items-center gap-2 sm:gap-4 relative">
 
         {/* Brand Logo & Title */}
@@ -26,13 +26,13 @@ const Header = () => {
               <img 
                 src={logo} 
                 alt="Custom Hub" 
-                className="h-10 w-10 sm:h-11 sm:w-11 object-contain rounded-full bg-white shadow-md p-0.5 ring-2 ring-amber-400 group-hover:scale-105 transition duration-200" 
+                className="h-10 w-10 sm:h-11 sm:w-11 object-contain rounded-full bg-white shadow-md p-0.5 ring-2 ring-yellow-400 group-hover:scale-105 transition duration-200" 
               />
-              <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full"></span>
+              <span className="absolute bottom-0 right-0 w-3 h-3 bg-sky-500 border-2 border-white rounded-full"></span>
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-slate-900 font-extrabold text-base sm:text-lg tracking-tight group-hover:text-amber-600 transition">CUSTOM HUB</span>
-              <span className="text-slate-500 text-[9px] sm:text-[10px] font-bold tracking-wider uppercase mt-0.5">Sublimation & Gifts</span>
+              <span className="text-slate-900 font-black text-base sm:text-lg tracking-tight group-hover:text-sky-600 transition">CUSTOM HUB</span>
+              <span className="text-sky-600 text-[9px] sm:text-[10px] font-extrabold tracking-wider uppercase mt-0.5">Sublimation & Gifts</span>
             </div>
           </Link>
 
@@ -42,7 +42,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Search bar for small screens (always visible) */}
+        {/* Search bar for small screens */}
         <div className="flex-1 block md:hidden max-w-xs">
           <Searchbar />
         </div>
@@ -50,30 +50,30 @@ const Header = () => {
         {/* Right Action Items */}
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
 
-          {/* Direct WhatsApp Callout Button */}
+          {/* Direct WhatsApp Callout Button (Sky Blue / Emerald) */}
           <a
             href="https://api.whatsapp.com/send?phone=917550079573&text=Hi%20Kaaviyaselvan,%20I%20want%20to%20order%20from%20Custom%20Hub!"
             target="_blank"
             rel="noreferrer"
-            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 rounded-full text-xs font-semibold shadow-xs transition duration-150"
+            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 rounded-full text-xs font-bold shadow-xs transition duration-150"
             title="Chat with Kaaviyaselvan"
           >
-            <WhatsAppIcon sx={{ fontSize: 16 }} />
+            <WhatsAppIcon sx={{ fontSize: 16 }} className="text-emerald-600" />
             <span>+91 7550079573</span>
           </a>
 
-          {/* User Auth / Account */}
+          {/* User Auth / Account (Vibrant Yellow) */}
           {!isAuthenticated ? (
             <Link 
               to="/login" 
-              className="px-4 py-1.5 text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 rounded-lg shadow-sm hover:shadow transition duration-150"
+              className="px-4 py-1.5 text-sm font-bold text-slate-900 bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-500 hover:to-amber-500 rounded-xl shadow-xs hover:shadow transition duration-150"
             >
               Login
             </Link>
           ) : (
             <div className="relative">
               <button 
-                className="userDropDown flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200/80 rounded-lg transition"
+                className="userDropDown flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition"
                 onClick={() => setTogglePrimaryDropDown(!togglePrimaryDropDown)}
               >
                 <span>{user && user.name ? user.name.split(" ", 1)[0] : 'Account'}</span>
@@ -86,12 +86,12 @@ const Header = () => {
           {/* Cart Icon & Count */}
           <Link 
             to="/cart" 
-            className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold text-slate-700 hover:text-amber-600 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg relative transition"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-bold text-slate-700 hover:text-sky-600 bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 rounded-xl relative transition duration-150"
           >
             <ShoppingCartIcon sx={{ fontSize: 20 }} />
             <span className="hidden sm:inline">Cart</span>
             {cartItems.length > 0 && (
-              <span className="min-w-[18px] h-[18px] px-1 bg-amber-500 text-white text-[11px] font-bold rounded-full flex items-center justify-center -ml-0.5">
+              <span className="min-w-[18px] h-[18px] px-1 bg-yellow-400 text-slate-950 text-[11px] font-black rounded-full flex items-center justify-center -ml-0.5 shadow-xs">
                 {cartItems.length}
               </span>
             )}

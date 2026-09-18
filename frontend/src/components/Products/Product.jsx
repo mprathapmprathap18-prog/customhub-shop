@@ -34,11 +34,11 @@ const Product = ({ _id, name, images, ratings, numOfReviews, price, cuttedPrice,
     );
 
     return (
-        <div className="group bg-white rounded-2xl border border-slate-200/80 hover:border-amber-400 shadow-xs hover:shadow-xl transition-all duration-300 p-3.5 flex flex-col justify-between relative overflow-hidden">
+        <div className="group bg-white rounded-2xl border border-slate-200 hover:border-sky-400 shadow-xs hover:shadow-xl transition-all duration-300 p-3.5 flex flex-col justify-between relative overflow-hidden">
             
-            {/* Top Bar: Category Badge & Wishlist Button */}
+            {/* Top Bar: Sky Blue Category Badge & Wishlist Button */}
             <div className="flex justify-between items-center w-full z-10">
-                <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-xs uppercase tracking-wider">
+                <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-gradient-to-r from-sky-500 to-sky-600 text-white shadow-xs uppercase tracking-wider">
                     {category || "Custom Gift"}
                 </span>
                 
@@ -67,7 +67,7 @@ const Product = ({ _id, name, images, ratings, numOfReviews, price, cuttedPrice,
                     />
                 </div>
 
-                <h3 className="text-xs sm:text-sm font-bold text-slate-800 group-hover/link:text-amber-600 transition-colors duration-150 mt-3 text-center line-clamp-2 h-10 px-1 leading-snug">
+                <h3 className="text-xs sm:text-sm font-bold text-slate-800 group-hover/link:text-sky-600 transition-colors duration-150 mt-3 text-center line-clamp-2 h-10 px-1 leading-snug">
                     {name}
                 </h3>
             </Link>
@@ -75,14 +75,14 @@ const Product = ({ _id, name, images, ratings, numOfReviews, price, cuttedPrice,
             {/* Ratings & Price */}
             <div className="mt-2 flex flex-col gap-2 w-full pt-1 border-t border-slate-100">
                 <div className="flex items-center justify-between text-xs">
-                    <span className="flex items-center gap-1 font-bold text-slate-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-md">
-                        <StarIcon sx={{ fontSize: 14, color: '#f59e0b' }} />
+                    <span className="flex items-center gap-1 font-bold text-slate-800 bg-yellow-50 border border-yellow-200 px-2 py-0.5 rounded-md">
+                        <StarIcon sx={{ fontSize: 14, color: '#eab308' }} />
                         <span>{ratings ? Number(ratings).toFixed(1) : "5.0"}</span>
                         <span className="text-slate-400 font-normal">({numOfReviews || 12})</span>
                     </span>
 
                     {cuttedPrice && cuttedPrice > price && (
-                        <span className="text-[11px] font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">
+                        <span className="text-[11px] font-extrabold text-sky-700 bg-sky-50 border border-sky-200 px-2 py-0.5 rounded-md">
                             {getDiscount(price, cuttedPrice)}% OFF
                         </span>
                     )}
@@ -96,23 +96,23 @@ const Product = ({ _id, name, images, ratings, numOfReviews, price, cuttedPrice,
                     )}
                 </div>
 
-                {/* Multi-Colored Interactive Action Buttons */}
+                {/* Yellow & Sky Blue Interactive Action Buttons */}
                 <div className="grid grid-cols-2 gap-1.5 mt-1 pt-1">
-                    {/* View Details / Buy Button (Electric Amber) */}
+                    {/* View Details / Order Button (Vibrant Yellow) */}
                     <Link
                         to={`/product/${_id}`}
-                        className="py-2 px-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-1 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-95 transition-all duration-200"
+                        className="py-2 px-2 bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 text-slate-950 rounded-xl font-black text-xs flex items-center justify-center gap-1 shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-95 transition-all duration-200"
                     >
                         <ShoppingBagIcon sx={{ fontSize: 14 }} />
                         <span>Order</span>
                     </Link>
 
-                    {/* WhatsApp Quick Order Button (Emerald Green) */}
+                    {/* WhatsApp Quick Order Button (Sky Blue) */}
                     <a
                         href={`https://api.whatsapp.com/send?phone=917550079573&text=${whatsappMessage}`}
                         target="_blank"
                         rel="noreferrer"
-                        className="py-2 px-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-1 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-95 transition-all duration-200"
+                        className="py-2 px-2 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-1 shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-95 transition-all duration-200"
                         title="Chat & Order via WhatsApp"
                     >
                         <WhatsAppIcon sx={{ fontSize: 15 }} />

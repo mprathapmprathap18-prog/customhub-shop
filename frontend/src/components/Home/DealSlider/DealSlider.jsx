@@ -53,13 +53,13 @@ const DealSlider = ({ title }) => {
     const productsList = useMemo(() => getRandomProducts(offerProducts, 12), []);
 
     return (
-        <section className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-5 my-1 overflow-hidden">
+        <section className="bg-white rounded-2xl border border-slate-200 shadow-xs p-4 sm:p-5 my-1 overflow-hidden">
             {/* Header */}
             <div className="flex justify-between items-center pb-3 mb-2 border-b border-slate-100">
-                <h2 className="text-base sm:text-xl font-extrabold text-slate-900 tracking-tight">{title}</h2>
+                <h2 className="text-base sm:text-xl font-black text-slate-900 tracking-tight">{title}</h2>
                 <Link 
                     to="/products" 
-                    className="flex items-center gap-1 text-xs font-bold text-amber-600 hover:text-amber-700 bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-full transition duration-150"
+                    className="flex items-center gap-1 text-xs font-bold text-sky-700 hover:text-sky-800 bg-sky-50 hover:bg-sky-100 px-3.5 py-1.5 rounded-full border border-sky-200 transition duration-150"
                 >
                     <span>View All</span>
                     <ArrowForwardIcon sx={{ fontSize: 14 }} />

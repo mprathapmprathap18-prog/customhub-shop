@@ -161,23 +161,23 @@ const ProductDetails = () => {
 
                                     <div className="w-full flex flex-col gap-2.5">
                                         <div className="w-full flex gap-3">
-                                            {/* <!-- add to cart btn (Midnight Indigo Gradient) --> */}
+                                            {/* <!-- add to cart btn (Sky Blue Gradient) --> */}
                                             {product.stock > 0 && (
                                                 <button 
                                                     onClick={itemInCart ? goToCart : addToCartHandler} 
-                                                    className="p-3.5 w-1/2 flex items-center justify-center gap-2 text-white bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 hover:from-slate-800 hover:to-indigo-900 rounded-xl shadow-md hover:shadow-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all duration-200"
+                                                    className="p-3.5 w-1/2 flex items-center justify-center gap-2 text-white bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 rounded-xl shadow-md hover:shadow-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all duration-200"
                                                 >
                                                     <ShoppingCartIcon sx={{ fontSize: 19 }} />
                                                     <span>{itemInCart ? "GO TO CART" : "ADD TO CART"}</span>
                                                 </button>
                                             )}
-                                            {/* <!-- buy now btn (Electric Amber Gradient) --> */}
+                                            {/* <!-- buy now btn (Vibrant Yellow Gradient) --> */}
                                             <button 
                                                 onClick={buyNow} 
                                                 disabled={product.stock < 1} 
                                                 className={product.stock < 1 
                                                     ? "p-3.5 w-full flex items-center justify-center gap-2 text-white bg-slate-400 cursor-not-allowed rounded-xl font-bold text-sm uppercase tracking-wide" 
-                                                    : "p-3.5 w-1/2 flex items-center justify-center gap-2 text-white bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 rounded-xl shadow-md hover:shadow-xl font-bold text-sm uppercase tracking-wide active:scale-95 transition-all duration-200"
+                                                    : "p-3.5 w-1/2 flex items-center justify-center gap-2 text-slate-950 bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 rounded-xl shadow-md hover:shadow-xl font-black text-sm uppercase tracking-wide active:scale-95 transition-all duration-200"
                                                 }
                                             >
                                                 <FlashOnIcon sx={{ fontSize: 19 }} />

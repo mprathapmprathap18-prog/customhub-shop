@@ -26,10 +26,10 @@ const Footer = () => {
         {/* Brand Column */}
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2.5">
-            <img src={logo} alt="Custom Hub" className="h-10 w-10 object-contain rounded-full bg-white p-0.5 ring-2 ring-amber-400" />
+            <img src={logo} alt="Custom Hub" className="h-10 w-10 object-contain rounded-full bg-white p-0.5 ring-2 ring-yellow-400" />
             <div className="flex flex-col leading-none">
-              <span className="text-white font-extrabold text-lg">CUSTOM HUB</span>
-              <span className="text-amber-400 text-[10px] font-bold uppercase tracking-wider">Sublimation Shop</span>
+              <span className="text-white font-black text-lg">CUSTOM HUB</span>
+              <span className="text-yellow-400 text-[10px] font-bold uppercase tracking-wider">Sublimation Shop</span>
             </div>
           </div>
           <p className="text-slate-400 text-xs leading-relaxed mt-1">
@@ -40,7 +40,7 @@ const Footer = () => {
               href="https://api.whatsapp.com/send?phone=917550079573&text=Hi%20Kaaviyaselvan,%20I%20have%20an%20inquiry%20for%20Custom%20Hub!"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold shadow transition"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white rounded-xl text-xs font-bold shadow transition"
             >
               <WhatsAppIcon sx={{ fontSize: 16 }} />
               <span>Chat with Owner (Kaaviyaselvan)</span>
@@ -51,12 +51,12 @@ const Footer = () => {
         {/* Quick Links */}
         <div className="flex flex-col gap-2.5">
           <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-1">Quick Links</h3>
-          <Link to="/products" className="text-slate-400 hover:text-amber-400 transition">All Products</Link>
-          <Link to="/products?category=Custom%20Mugs" className="text-slate-400 hover:text-amber-400 transition">Custom Mugs</Link>
-          <Link to="/products?category=Personalized%20Gifts" className="text-slate-400 hover:text-amber-400 transition">Personalized Gifts</Link>
-          <Link to="/products?category=Photo%20Frames" className="text-slate-400 hover:text-amber-400 transition">Photo Frames</Link>
-          <Link to="/products?category=Gift%20Hampers" className="text-slate-400 hover:text-amber-400 transition">Gift Hampers</Link>
-          <Link to="/cart" className="text-slate-400 hover:text-amber-400 transition">My Cart</Link>
+          <Link to="/products" className="text-slate-400 hover:text-sky-400 transition">All Products</Link>
+          <Link to="/products?category=Custom%20Mugs" className="text-slate-400 hover:text-sky-400 transition">Custom Mugs</Link>
+          <Link to="/products?category=Personalized%20Gifts" className="text-slate-400 hover:text-sky-400 transition">Personalized Gifts</Link>
+          <Link to="/products?category=Photo%20Frames" className="text-slate-400 hover:text-sky-400 transition">Photo Frames</Link>
+          <Link to="/products?category=Gift%20Hampers" className="text-slate-400 hover:text-sky-400 transition">Gift Hampers</Link>
+          <Link to="/cart" className="text-slate-400 hover:text-sky-400 transition">My Cart</Link>
         </div>
 
         {/* Orders & Service */}
@@ -67,7 +67,7 @@ const Footer = () => {
           <span className="text-slate-400">🖨️ High-Definition Heat Press</span>
           <span className="text-slate-400">🚚 Krishnagiri & All India Shipping</span>
           <div className="flex items-center gap-1.5 text-slate-400 mt-2">
-            <AccessTimeIcon sx={{ fontSize: 16, color: '#f59e0b' }} />
+            <AccessTimeIcon sx={{ fontSize: 16, color: '#eab308' }} />
             <span>Mon - Sun: 9:00 AM - 10:00 PM</span>
           </div>
         </div>
@@ -77,7 +77,7 @@ const Footer = () => {
           <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-1">Store Location</h3>
           
           <div className="flex items-start gap-2 text-slate-400">
-            <LocationOnIcon sx={{ fontSize: 18, color: '#f59e0b' }} className="shrink-0 mt-0.5" />
+            <LocationOnIcon sx={{ fontSize: 18, color: '#eab308' }} className="shrink-0 mt-0.5" />
             <p className="leading-relaxed">
               Custom Hub Gift Shop,<br />
               Sri Balaji Complex, New Pet,<br />
@@ -86,15 +86,15 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-2 text-slate-400 mt-1">
-            <PhoneIcon sx={{ fontSize: 16, color: '#f59e0b' }} />
-            <a href="tel:+917550079573" className="hover:text-amber-400 transition">+91 7550079573</a>
+            <PhoneIcon sx={{ fontSize: 16, color: '#eab308' }} />
+            <a href="tel:+917550079573" className="hover:text-sky-400 transition">+91 7550079573</a>
           </div>
 
           <a 
             href="https://maps.app.goo.gl/gjxPqjsHes6Zy7No9?g_st=ic" 
             target="_blank" 
             rel="noreferrer"
-            className="inline-flex items-center gap-1 text-amber-400 hover:text-amber-300 font-semibold underline mt-1"
+            className="inline-flex items-center gap-1 text-yellow-400 hover:text-yellow-300 font-bold underline mt-1"
           >
             <span>📍 Open in Google Maps</span>
           </a>
