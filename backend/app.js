@@ -11,10 +11,14 @@ const app = express();
 // Gzip compression for high-speed download
 app.use(compression());
 
+const path = require('path');
+const dotenv = require('dotenv');
+
 // config
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config({ path: 'backend/config/config.env' });
-}
+dotenv.config({ path: path.join(__dirname, 'config/config.env') });
+if (!process.env.JWT_SECRET) process.env.JWT_SECRET = 'toyshop-local-dev-secret-key-2026';
+if (!process.env.JWT_EXPIRE) process.env.JWT_EXPIRE = '7d';
+if (!process.env.COOKIE_EXPIRE) process.env.COOKIE_EXPIRE = '5';
 
 app.use(express.json());
 app.use(cookieParser());

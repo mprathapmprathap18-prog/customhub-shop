@@ -1,3 +1,11 @@
+const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: path.join(__dirname, '../backend/config/config.env') });
+if (!process.env.JWT_SECRET) process.env.JWT_SECRET = 'toyshop-local-dev-secret-key-2026';
+if (!process.env.JWT_EXPIRE) process.env.JWT_EXPIRE = '7d';
+if (!process.env.COOKIE_EXPIRE) process.env.COOKIE_EXPIRE = '5';
+
 const app = require('../backend/app');
 const connectDatabase = require('../backend/config/database');
 const cloudinary = require('cloudinary');
