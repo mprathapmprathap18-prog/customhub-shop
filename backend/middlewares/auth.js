@@ -11,7 +11,8 @@ exports.isAuthenticatedUser = asyncErrorHandler(async (req, res, next) => {
         return next(new ErrorHandler("Please Login to Access", 401))
     }
 
-    const decodedData = jwt.verify(token, process.env.JWT_SECRET || 'toyshop-local-dev-secret-key-2026');
+    const jwtSecret = (process.env.JWT_SECRET && process.env.JWT_SECRET.trim()) ? process.env.JWT_SECRET.trim() : 'toyshop-local-dev-secret-key-2026';
+    const decodedData = jwt.verify(token, jwtSecret);
     req.user = await User.findById(decodedData.id);
     next();
 });
