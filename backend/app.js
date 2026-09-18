@@ -21,6 +21,8 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 
+const path = require('path');
+const fs = require('fs');
 const connectDatabase = require('./config/database');
 
 // Ensure database connection for all API requests
